@@ -422,6 +422,14 @@
                     <div id="detail-atk" class="text-xl font-bold text-red-400">150</div>
                 </div>
             </div>
+            
+            <!-- Story Section -->
+            <div class="bg-gray-900/50 p-4 rounded-xl border border-gray-700">
+                <h4 class="text-xs font-bold text-gray-500 mb-1 uppercase tracking-widest">Profile</h4>
+                <div id="detail-story" class="text-sm text-gray-300 italic leading-relaxed">
+                    <!-- Story inserted here -->
+                </div>
+            </div>
 
             <!-- Leveling Section (Visible only if owned) -->
             <div id="detail-upgrade-section" class="bg-gray-700/50 p-4 rounded-xl border border-gray-600">
@@ -433,7 +441,7 @@
                     <div class="exp-bar-fill w-0" id="detail-exp-bar"></div>
                 </div>
                 
-                <div class="flex gap-2">
+                <div id="detail-buttons" class="flex gap-2">
                     <button id="btn-levelup" onclick="performLevelUp()" class="flex-1 bg-blue-600 hover:bg-blue-500 text-white py-3 rounded-lg font-bold shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition">
                         升級 <br><span class="text-xs font-normal opacity-80">-100 EXP</span>
                     </button>
@@ -503,7 +511,7 @@
                     <div class="w-32 h-1 bg-gradient-to-r from-transparent via-white to-transparent absolute opacity-70 group-hover:rotate-45 transition-transform duration-1000"></div>
                     <div class="w-1 h-32 bg-gradient-to-b from-transparent via-white to-transparent absolute opacity-70 group-hover:rotate-45 transition-transform duration-1000"></div>
                 </div>
-                <span class="mt-4 text-sm text-white/50 tracking-[0.3em] font-light group-hover:text-white transition-colors uppercase font-mono">Summon</span>
+                <span class="mt-4 text-sm text-white/50 tracking-[0.3em] font-light group-hover:text-white transition-colors uppercase font-mono">召喚</span>
             </button>
 
             <!-- UI Layer -->
@@ -750,18 +758,66 @@
 
         // --- Data ---
         const CHARACTERS_DB = [
-            { id: 'ssr1', name: '聖光騎士', rarity: 'SSR', icon: '👑', type: 'phys', hp: 200, atk: 45, def: 20, seed: 'Paladin', bg: 'fef3c7', skills: [{name:'聖劍斬',type:'dmg',val:1.0,cd:0},{name:'盾牌猛擊',type:'dmg',val:1.8,cd:2},{name:'聖光庇護',type:'heal',val:80,cd:4}] },
-            { id: 'ssr2', name: '虛空法師', rarity: 'SSR', icon: '🔮', type: 'mag', hp: 140, atk: 60, def: 10, seed: 'Witch', bg: 'e9d5ff', skills: [{name:'暗影球',type:'dmg',val:1.0,cd:0},{name:'虛空爆裂',type:'aoe',val:0.8,cd:3},{name:'黑洞吞噬',type:'dmg',val:2.5,cd:4}] },
-            { id: 'ssr3', name: '龍血戰士', rarity: 'SSR', icon: '🐲', type: 'phys', hp: 220, atk: 50, def: 15, seed: 'DragonSlayer', bg: 'fee2e2', skills: [{name:'龍爪擊',type:'dmg',val:1.0,cd:0},{name:'嗜血打擊',type:'lifesteal',val:1.5,cd:3},{name:'龍之吐息',type:'aoe',val:1.2,cd:5}] },
-            { id: 'sr1', name: '皇家射手', rarity: 'SR', icon: '🏹', type: 'phys', hp: 120, atk: 35, def: 8, seed: 'Ranger', bg: 'd1fae5', skills: [{name:'精準射擊',type:'dmg',val:1.0,cd:0},{name:'二連矢',type:'dmg',val:1.6,cd:2},{name:'爆裂箭',type:'aoe',val:0.7,cd:4}] },
-            { id: 'sr2', name: '戰鬥牧師', rarity: 'SR', icon: '🔨', type: 'phys', hp: 160, atk: 25, def: 15, seed: 'Cleric', bg: 'f3f4f6', skills: [{name:'戰錘擊',type:'dmg',val:1.0,cd:0},{name:'神聖新星',type:'heal',val:50,cd:3},{name:'審判之光',type:'dmg',val:2.0,cd:4}] },
-            { id: 'sr3', name: '暗影刺客', rarity: 'SR', icon: '🗡️', type: 'phys', hp: 100, atk: 45, def: 5, seed: 'Ninja', bg: 'e5e7eb', skills: [{name:'背刺',type:'dmg',val:1.0,cd:0},{name:'塗毒匕首',type:'dmg',val:1.5,cd:2},{name:'致命一擊',type:'dmg',val:3.0,cd:5}] },
-            { id: 'sr4', name: '元素使者', rarity: 'SR', icon: '🔥', type: 'mag', hp: 110, atk: 40, def: 8, seed: 'Pyromancer', bg: 'ffedd5', skills: [{name:'火球術',type:'dmg',val:1.0,cd:0},{name:'烈焰風暴',type:'aoe',val:0.6,cd:3},{name:'炎爆術',type:'dmg',val:2.2,cd:4}] },
-            { id: 'r1', name: '王國步兵', rarity: 'R', icon: '💂', type: 'phys', hp: 100, atk: 20, def: 10, seed: 'Guard', bg: 'f1f5f9', skills: [{name:'突刺',type:'dmg',val:1.0,cd:0},{name:'防禦態勢',type:'heal',val:20,cd:3},{name:'全力一擊',type:'dmg',val:1.5,cd:4}] },
-            { id: 'r2', name: '見習法師', rarity: 'R', icon: '🕯️', type: 'mag', hp: 80, atk: 25, def: 5, seed: 'Apprentice', bg: 'eff6ff', skills: [{name:'能量彈',type:'dmg',val:1.0,cd:0},{name:'專注',type:'dmg',val:1.2,cd:2},{name:'不穩定的爆炸',type:'aoe',val:0.5,cd:4}] },
-            { id: 'r3', name: '森林斥候', rarity: 'R', icon: '🍃', type: 'phys', hp: 90, atk: 22, def: 6, seed: 'Scout', bg: 'ecfccb', skills: [{name:'射擊',type:'dmg',val:1.0,cd:0},{name:'草藥包紮',type:'heal',val:30,cd:3},{name:'陷阱箭',type:'dmg',val:1.4,cd:3}] },
-            { id: 'r4', name: '僱傭兵', rarity: 'R', icon: '💰', type: 'phys', hp: 110, atk: 25, def: 8, seed: 'Mercenary', bg: 'fff7ed', skills: [{name:'揮砍',type:'dmg',val:1.0,cd:0},{name:'蠻力重擊',type:'dmg',val:1.3,cd:2},{name:'收錢辦事',type:'lifesteal',val:1.0,cd:4}] },
-            { id: 'r5', name: '村民', rarity: 'R', icon: '🌾', type: 'phys', hp: 70, atk: 15, def: 2, seed: 'Peasant', bg: 'fafaf9', skills: [{name:'丟石頭',type:'dmg',val:1.0,cd:0},{name:'吃麵包',type:'heal',val:20,cd:3},{name:'呼救',type:'dmg',val:0.5,cd:4}] },
+            { 
+                id: 'ssr1', name: '聖光騎士', rarity: 'SSR', icon: '👑', type: 'phys', hp: 200, atk: 45, def: 20, seed: 'Paladin', bg: 'fef3c7', 
+                story: "王國最年輕的騎士團長，誓言用手中的劍守護所有弱者。傳說他的劍刃在滿月之夜會發出神聖的光芒，淨化一切邪惡。",
+                skills: [{name:'聖劍斬',type:'dmg',val:1.0,cd:0},{name:'盾牌猛擊',type:'dmg',val:1.8,cd:2},{name:'聖光庇護',type:'heal',val:80,cd:4}] 
+            },
+            { 
+                id: 'ssr2', name: '虛空法師', rarity: 'SSR', icon: '🔮', type: 'mag', hp: 140, atk: 60, def: 10, seed: 'Witch', bg: 'e9d5ff', 
+                story: "曾是皇家學院的天才學者，為了追求究極的真理而踏入禁忌的虛空領域。現在的她，既是知識的化身，也是深淵的代言人。",
+                skills: [{name:'暗影球',type:'dmg',val:1.0,cd:0},{name:'虛空爆裂',type:'aoe',val:0.8,cd:3},{name:'黑洞吞噬',type:'dmg',val:2.5,cd:4}] 
+            },
+            { 
+                id: 'ssr3', name: '龍血戰士', rarity: 'SSR', icon: '🐲', type: 'phys', hp: 220, atk: 50, def: 15, seed: 'DragonSlayer', bg: 'fee2e2', 
+                story: "傳說中沐浴過古龍之血的狂戰士，體內流淌著不滅的火焰。他揮舞巨劍時產生的熱浪，足以將鋼鐵融化。",
+                skills: [{name:'龍爪擊',type:'dmg',val:1.0,cd:0},{name:'嗜血打擊',type:'lifesteal',val:1.5,cd:3},{name:'龍之吐息',type:'aoe',val:1.2,cd:5}] 
+            },
+            { 
+                id: 'sr1', name: '皇家射手', rarity: 'SR', icon: '🏹', type: 'phys', hp: 120, atk: 35, def: 8, seed: 'Ranger', bg: 'd1fae5', 
+                story: "精靈王族的護衛隊長，擁有鷹一般的視力。據說他的箭矢從未失手，能在百步之外射穿敵人的盔甲縫隙。",
+                skills: [{name:'精準射擊',type:'dmg',val:1.0,cd:0},{name:'二連矢',type:'dmg',val:1.6,cd:2},{name:'爆裂箭',type:'aoe',val:0.7,cd:4}] 
+            },
+            { 
+                id: 'sr2', name: '戰鬥牧師', rarity: 'SR', icon: '🔨', type: 'phys', hp: 160, atk: 25, def: 15, seed: 'Cleric', bg: 'f3f4f6', 
+                story: "雖然隸屬於教會，但他堅信「物理超度」也是一種慈悲。比起祈禱，他更擅長用手中的戰錘粉碎異端。",
+                skills: [{name:'戰錘擊',type:'dmg',val:1.0,cd:0},{name:'神聖新星',type:'heal',val:50,cd:3},{name:'審判之光',type:'dmg',val:2.0,cd:4}] 
+            },
+            { 
+                id: 'sr3', name: '暗影刺客', rarity: 'SR', icon: '🗡️', type: 'phys', hp: 100, atk: 45, def: 5, seed: 'Ninja', bg: 'e5e7eb', 
+                story: "來自東方神秘島國的流浪忍者，沒有名字，只有代號。只要付得起足夠的黃金，他就能成為你最鋒利的影子。",
+                skills: [{name:'背刺',type:'dmg',val:1.0,cd:0},{name:'塗毒匕首',type:'dmg',val:1.5,cd:2},{name:'致命一擊',type:'dmg',val:3.0,cd:5}] 
+            },
+            { 
+                id: 'sr4', name: '元素使者', rarity: 'SR', icon: '🔥', type: 'mag', hp: 110, atk: 40, def: 8, seed: 'Pyromancer', bg: 'ffedd5', 
+                story: "癡迷於火焰魔法的瘋狂法師，性格如同他召喚的烈焰一樣不穩定。比起擊敗敵人，他更享受燃燒的過程。",
+                skills: [{name:'火球術',type:'dmg',val:1.0,cd:0},{name:'烈焰風暴',type:'aoe',val:0.6,cd:3},{name:'炎爆術',type:'dmg',val:2.2,cd:4}] 
+            },
+            { 
+                id: 'r1', name: '王國步兵', rarity: 'R', icon: '💂', type: 'phys', hp: 100, atk: 20, def: 10, seed: 'Guard', bg: 'f1f5f9', 
+                story: "最基層的軍隊力量，雖然裝備簡陋，但擁有堅定的意志。為了守護家鄉的農田，他們絕不退縮。",
+                skills: [{name:'突刺',type:'dmg',val:1.0,cd:0},{name:'防禦態勢',type:'heal',val:20,cd:3},{name:'全力一擊',type:'dmg',val:1.5,cd:4}] 
+            },
+            { 
+                id: 'r2', name: '見習法師', rarity: 'R', icon: '🕯️', type: 'mag', hp: 80, atk: 25, def: 5, seed: 'Apprentice', bg: 'eff6ff', 
+                story: "魔法學院的一年級生，還不能完全控制魔力。經常在練習時不小心炸掉實驗室，但潛力備受期待。",
+                skills: [{name:'能量彈',type:'dmg',val:1.0,cd:0},{name:'專注',type:'dmg',val:1.2,cd:2},{name:'不穩定的爆炸',type:'aoe',val:0.5,cd:4}] 
+            },
+            { 
+                id: 'r3', name: '森林斥候', rarity: 'R', icon: '🍃', type: 'phys', hp: 90, atk: 22, def: 6, seed: 'Scout', bg: 'ecfccb', 
+                story: "熟悉森林地形的偵查兵，擅長設置陷阱和草藥治療。在野外生存這方面，沒人比他更在行。",
+                skills: [{name:'射擊',type:'dmg',val:1.0,cd:0},{name:'草藥包紮',type:'heal',val:30,cd:3},{name:'陷阱箭',type:'dmg',val:1.4,cd:3}] 
+            },
+            { 
+                id: 'r4', name: '僱傭兵', rarity: 'R', icon: '💰', type: 'phys', hp: 110, atk: 25, def: 8, seed: 'Mercenary', bg: 'fff7ed', 
+                story: "只認錢不認人的流浪戰士，雖然戰鬥風格粗魯，但在混戰中卻意外地可靠。只要報酬到位，巨龍也敢砍。",
+                skills: [{name:'揮砍',type:'dmg',val:1.0,cd:0},{name:'蠻力重擊',type:'dmg',val:1.3,cd:2},{name:'收錢辦事',type:'lifesteal',val:1.0,cd:4}] 
+            },
+            { 
+                id: 'r5', name: '村民', rarity: 'R', icon: '🌾', type: 'phys', hp: 70, atk: 15, def: 2, seed: 'Peasant', bg: 'fafaf9', 
+                story: "原本只是想種田，卻無奈被捲入戰爭的可憐人。雖然戰鬥力不強，但投擲石頭的準度是在趕野豬時練出來的。",
+                skills: [{name:'丟石頭',type:'dmg',val:1.0,cd:0},{name:'吃麵包',type:'heal',val:20,cd:3},{name:'呼救',type:'dmg',val:0.5,cd:4}] 
+            },
         ];
 
         const STAGES_DB = [
@@ -846,6 +902,7 @@
                     char.icon = base.icon;
                     char.rarity = base.rarity;
                     char.desc = base.desc;
+                    // Note: We don't necessarily need to sync story to inventory as we pull it from DB for display
                     if (char.limitBreak === undefined) char.limitBreak = 0;
                     if (char.duplicates === undefined) char.duplicates = 0;
                 }
@@ -912,6 +969,97 @@
         
         function renderLobby() {
             // Signboard girl removed as per request
+        }
+
+        // --- Gacha System ---
+        function pullGacha(count) {
+            const cost = count * 100;
+            if (gameState.gems < cost) { alert('寶石不足！'); return; }
+            
+            gameState.gems -= cost;
+            updateUI();
+            saveGame();
+
+            const results = [];
+            let maxRarityVal = 0; // 0:R, 1:SR, 2:SSR
+
+            for (let i = 0; i < count; i++) {
+                let rand = Math.random() * 100;
+                let rarity = 'R';
+                // Ten pull guarantee logic (simple)
+                if (i === 9 && count === 10 && results.every(r => r.char.rarity === 'R')) {
+                     if (rand > 30) rand = Math.random() * 30; // Force SR/SSR
+                }
+
+                if (rand < 5) rarity = 'SSR';
+                else if (rand < 30) rarity = 'SR';
+                
+                const pool = CHARACTERS_DB.filter(c => c.rarity === rarity);
+                const charBase = pool[Math.floor(Math.random() * pool.length)];
+                
+                const result = addCharacter(charBase.id);
+                results.push(result);
+
+                let rVal = rarity === 'SSR' ? 2 : (rarity === 'SR' ? 1 : 0);
+                if (rVal > maxRarityVal) maxRarityVal = rVal;
+            }
+
+            // Play Animation
+            const animType = maxRarityVal === 2 ? 'SSR' : (maxRarityVal === 1 ? 'SR' : 'R');
+            playGachaAnimation(animType, () => {
+                showGachaResults(results);
+            });
+        }
+
+        function playGachaAnimation(type, callback) {
+            const overlay = document.getElementById('ssr-summon-animation');
+            const flash = document.getElementById('summon-flash');
+            overlay.classList.remove('hidden');
+            overlay.className = `fixed inset-0 z-[70] bg-black flex flex-col items-center justify-center anim-${type}`;
+            
+            // Play Sound
+            if(type === 'SSR') SoundManager.play('ssr_anim');
+            else SoundManager.play('gacha');
+
+            setTimeout(() => {
+                flash.classList.remove('hidden');
+                setTimeout(() => {
+                    overlay.classList.add('hidden');
+                    overlay.classList.remove(`anim-${type}`);
+                    flash.classList.add('hidden');
+                    callback();
+                }, 500); // Wait for flash to cover screen
+            }, type === 'SSR' ? 2800 : (type === 'SR' ? 2300 : 1800)); // Animation duration
+        }
+
+        function showGachaResults(results) {
+            const container = document.getElementById('gacha-cards-container');
+            container.innerHTML = '';
+            results.forEach(res => {
+                const char = res.char;
+                const div = createCharCard(char, false, null);
+                if (res.isNew) {
+                    const badge = document.createElement('div');
+                    badge.className = "absolute top-2 left-2 bg-red-600 text-white text-xs px-2 py-1 rounded font-bold z-20 animate-bounce";
+                    badge.innerText = "NEW!";
+                    div.appendChild(badge);
+                } else {
+                    // Show refund or dupe info
+                    const badge = document.createElement('div');
+                    badge.className = "absolute bottom-20 left-0 w-full text-center text-xs text-yellow-300 font-bold z-20 shadow-black drop-shadow-md";
+                    badge.innerText = res.isMax ? `已滿突 (返還 ${res.refund} 鑽)` : "突破碎片 +1";
+                    div.appendChild(badge);
+                }
+                container.appendChild(div);
+            });
+            document.getElementById('gacha-result').classList.remove('hidden');
+            document.getElementById('gacha-result').classList.add('flex');
+        }
+
+        function closeGachaResult() {
+            SoundManager.play('click');
+            document.getElementById('gacha-result').classList.add('hidden');
+            document.getElementById('gacha-result').classList.remove('flex');
         }
 
         // --- Character System ---
@@ -982,9 +1130,9 @@
                 div.onclick = () => {
                     SoundManager.play('click');
                     if (isOwned) {
-                        // Find index in inventory to show full upgrade details
+                        // Find index in inventory to show details (ReadOnly Mode)
                         const idx = gameState.inventory.findIndex(c => c.baseId === baseChar.id);
-                        openCharDetail(idx);
+                        openCharDetail(idx, true); // Pass true for readOnly
                     } else {
                         // Show basic details for unowned
                         openGalleryDetail(baseChar);
@@ -1007,6 +1155,9 @@
             
             document.getElementById('detail-hp').innerText = baseChar.hp;
             document.getElementById('detail-atk').innerText = baseChar.atk;
+
+            // Set unowned story
+            document.getElementById('detail-story').innerHTML = '<span class="text-gray-500"><i class="fas fa-lock mr-2"></i> ??? (解鎖角色以查看故事)</span>';
             
             // Hide upgrade section, show unowned message
             document.getElementById('detail-upgrade-section').classList.add('hidden');
@@ -1016,18 +1167,32 @@
             document.getElementById('char-detail-overlay').classList.add('flex');
         }
 
-        function openCharDetail(index) {
+        function openCharDetail(index, fromGallery = false) {
             selectedCharIndex = index;
             const char = gameState.inventory[index];
+            const baseChar = CHARACTERS_DB.find(c => c.id === char.baseId); // Get base info for story
+
             document.getElementById('detail-name').innerText = char.name;
             document.getElementById('detail-rarity').innerText = char.rarity;
             document.getElementById('detail-rarity').className = `text-sm font-bold mb-2 text-${char.rarity}`;
             document.getElementById('detail-class').innerText = char.desc;
             document.getElementById('detail-img').src = getCharImage(char);
+
+            // Set owned story
+            document.getElementById('detail-story').innerText = baseChar.story || "暫無故事。";
             
             // Show upgrade section, hide unowned message
-            document.getElementById('detail-upgrade-section').classList.remove('hidden');
+            const upgradeSection = document.getElementById('detail-upgrade-section');
+            upgradeSection.classList.remove('hidden');
             document.getElementById('detail-unowned-msg').classList.add('hidden');
+            
+            // Toggle buttons based on context
+            const actionButtons = document.getElementById('detail-buttons');
+            if (fromGallery) {
+                actionButtons.classList.add('hidden');
+            } else {
+                actionButtons.classList.remove('hidden');
+            }
 
             updateDetailStats();
             document.getElementById('char-detail-overlay').classList.remove('hidden');
