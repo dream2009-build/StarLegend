@@ -1842,6 +1842,16 @@
                 if (target.currentHp <= 0) return; 
             }
 
+            // FIX: Set Cooldown after usage
+            if (selectedSkill.cd > 0) {
+                let finalCD = selectedSkill.cd;
+                // Apply CD Reduction from equipment/stats if applicable
+                if (actingPlayer.cdRed > 0) {
+                    finalCD = Math.max(0, finalCD - actingPlayer.cdRed);
+                }
+                actingPlayer.cooldowns[battleState.selectedSkillIndex] = finalCD;
+            }
+
             const attacker = actingPlayer;
             const skill = selectedSkill;
             
